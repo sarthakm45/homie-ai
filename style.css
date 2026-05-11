@@ -1,5 +1,125 @@
-body{
-    background-color: #111;
-    color: white;
-    font-family: Arial;
-  }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #f2f2f2;
+  background: #0f0f14;
+  line-height: 1.6;
+}
+
+.hero {
+  padding: 2rem 1.25rem 4rem;
+  background: linear-gradient(120deg, #1c1f2c 0%, #10131b 100%);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: #d5d9ff;
+  text-decoration: none;
+}
+
+.hero-content {
+  margin-top: 3rem;
+  max-width: 700px;
+}
+
+.hero-content h2 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0.75rem 0;
+}
+
+.tag {
+  color: #9cb0ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.section h3 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #181d2a;
+  border: 1px solid #2b3246;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #6b7cff;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 600px;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: #111623;
+  color: #f2f2f2;
+  border: 1px solid #303955;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font: inherit;
+}
+
+#formStatus {
+  margin-top: 0.7rem;
+  min-height: 1.2rem;
+}
+
+footer {
+  border-top: 1px solid #273047;
+  text-align: center;
+  padding: 1.2rem;
+  color: #c1c7df;
+}

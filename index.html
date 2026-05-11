@@ -1,12 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Homie AI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CutCraft Studio | Editing Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="hero">
+    <nav class="nav">
+      <h1>CutCraft Studio</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <p class="tag">Freelance Video & Photo Editor</p>
+      <h2>Crafting stories that keep audiences watching</h2>
+      <p id="bio"></p>
+      <a href="#contact" class="btn">Book a Project</a>
+    </div>
+  </header>
 
-  <h1>Welcome to Homie AI</h1>
+  <main>
+    <section id="about" class="section">
+      <h3>About</h3>
+      <p id="aboutText"></p>
+    </section>
+
+    <section id="services" class="section">
+      <h3>Services</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Video Editing</h4>
+          <p>Short-form reels, YouTube edits, podcasts, and brand promos.</p>
+        </article>
+        <article class="card">
+          <h4>Color Grading</h4>
+          <p>Cinematic color correction and grading for consistent visual tone.</p>
+        </article>
+        <article class="card">
+          <h4>Photo Retouching</h4>
+          <p>Professional cleanup, skin retouching, and social-ready finishes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section">
+      <h3>Featured Work</h3>
+      <div id="projectList" class="cards"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <h3>Contact</h3>
+      <form id="contactForm">
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        <textarea id="message" name="message" rows="4" placeholder="Project details" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <p id="formStatus" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> CutCraft Studio</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
