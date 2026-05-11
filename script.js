@@ -5,7 +5,10 @@ const siteStatusEl = document.getElementById("siteStatus");
 const formEl = document.getElementById("contactForm");
 const formStatusEl = document.getElementById("formStatus");
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 async function loadProfile() {
   const res = await fetch("/api/profile");
