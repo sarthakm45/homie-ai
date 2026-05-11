@@ -71,6 +71,17 @@ formEl.addEventListener("submit", async (event) => {
   }
 });
 
-Promise.all([loadProfile(), loadProjects()]).catch(() => {
-  siteStatusEl.textContent = "Could not load website data from backend.";
+Promise.allSettled([loadProfile(), loadProjects()]).then((results) => {
+  const errors = [];
+
+  if (results[0].status === "rejected") {
+    errors.push("profile");
+  }
+  if (results[1].status === "rejected") {
+    errors.push("projects");
+  }
+
+  if (errors.length > 0) {
+    siteStatusEl.textContent = `Could not load ${errors.join(" and ")} data from backend.`;
+  }
 });

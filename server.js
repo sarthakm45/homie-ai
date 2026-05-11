@@ -94,17 +94,49 @@ async function saveContact(contact) {
   await fs.promises.writeFile(CONTACTS_FILE, JSON.stringify(existing, null, 2), "utf8");
 }
 
+function isValidEmail(email) {
+  if (typeof email !== "string" || email.length > 254 || email.includes(" ")) {
+    return false;
+  }
+
+  const atIndex = email.indexOf("@");
+  if (atIndex <= 0 || atIndex !== email.lastIndexOf("@")) {
+    return false;
+  }
+
+  const localPart = email.slice(0, atIndex);
+  const domainPart = email.slice(atIndex + 1);
+
+  if (!localPart || !domainPart || !domainPart.includes(".")) {
+    return false;
+  }
+
+  if (
+    localPart.startsWith(".") ||
+    localPart.endsWith(".") ||
+    domainPart.startsWith(".") ||
+    domainPart.endsWith(".") ||
+    localPart.includes("..") ||
+    domainPart.includes("..")
+  ) {
+    return false;
+  }
+
+  if (!/^[A-Za-z0-9._%+-]+$/.test(localPart) || !/^[A-Za-z0-9.-]+$/.test(domainPart)) {
+    return false;
+  }
+
+  const tld = domainPart.split(".").pop();
+  return Boolean(tld && /^[A-Za-z]{2,}$/.test(tld));
+}
+
 function isValidContact({ name, email, message }) {
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  const [localPart = "", domainPart = ""] = email.split("@");
   return (
     typeof name === "string" &&
     typeof email === "string" &&
     typeof message === "string" &&
     name.trim().length >= 2 &&
-    emailRegex.test(email) &&
-    !localPart.includes("..") &&
-    !domainPart.includes("..") &&
+    isValidEmail(email) &&
     message.trim().length >= 10
   );
 }
