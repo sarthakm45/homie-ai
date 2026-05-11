@@ -59,6 +59,11 @@ body {
   font-size: 0.82rem;
 }
 
+.site-status {
+  color: #ffb7b7;
+  min-height: 1.2rem;
+}
+
 .section {
   max-width: 1000px;
   margin: 0 auto;

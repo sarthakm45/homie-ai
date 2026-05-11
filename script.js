@@ -1,6 +1,7 @@
 const bioEl = document.getElementById("bio");
 const aboutEl = document.getElementById("aboutText");
 const projectListEl = document.getElementById("projectList");
+const siteStatusEl = document.getElementById("siteStatus");
 const formEl = document.getElementById("contactForm");
 const formStatusEl = document.getElementById("formStatus");
 
@@ -68,5 +69,5 @@ formEl.addEventListener("submit", async (event) => {
 });
 
 Promise.all([loadProfile(), loadProjects()]).catch(() => {
-  formStatusEl.textContent = "Could not load website data from backend.";
+  siteStatusEl.textContent = "Could not load website data from backend.";
 });

@@ -5,6 +5,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = __dirname;
 const CONTACTS_FILE = path.join(__dirname, "contacts.json");
+const MAX_REQUEST_SIZE = 1_000_000;
 
 const profile = {
   bio: "Helping creators and brands stand out with clean, high-retention edits.",
@@ -51,7 +52,7 @@ function parseJsonBody(req) {
 
     req.on("data", (chunk) => {
       body += chunk;
-      if (body.length > 1e6) {
+      if (body.length > MAX_REQUEST_SIZE) {
         req.destroy();
         reject(new Error("Request too large"));
       }
@@ -94,13 +95,14 @@ async function saveContact(contact) {
 }
 
 function isValidContact({ name, email, message }) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   return (
     typeof name === "string" &&
     typeof email === "string" &&
     typeof message === "string" &&
     name.trim().length >= 2 &&
     emailRegex.test(email) &&
+    !email.includes("..") &&
     message.trim().length >= 10
   );
 }
